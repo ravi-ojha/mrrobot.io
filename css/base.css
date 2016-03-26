@@ -4,8 +4,22 @@ body {
     font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
+a {
+    color: rgba(108, 190, 245, 0.5);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #6cbef5;
+    text-decoration: none;
+}
+
 .float-left {
     float: left;
+}
+
+.float-right {
+    float: right;
 }
 
 .container {
