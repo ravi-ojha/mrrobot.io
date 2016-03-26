@@ -1,3 +1,91 @@
-mrrobot.io  
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/cssConsole.console.css" type="text/css" rel="stylesheet">
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="js/cssConsole.min.js"></script>
+<meta charset=utf-8 />
+<title>Mr. Robot :: Mrrobot.io</title>
+</head>
+<body>
+    <div class="container">
+        <div class="intro">
+            <div class="line blue">Hey yo! Welcome to my terminal.</div>
+        </div>
+        <div id="output" class="output">
 
-That is one cool domain name!
+        </div>
+        <div class="console">
+            <div class="float-left green weight-700">anon@mrrobot.io <span class="blue">$</span></div>
+            <div class="float-left" id="input"></div>
+        </div>
+    </div>
+<script>
+$(document).ready(function() {
+    $('#input').find('input').focus();
+});
+
+
+$('#input').cssConsole({
+    inputName:'console',
+    charLimit: 60,
+    onEnter: function(){
+        addLine("$ "+$('#input').find('input').val());
+        execCommand($('#input').find('input').val());
+        $('#input').cssConsole('reset');
+        $('#input').find('input').focus();
+    }
+});
+
+var lineLimit = 6;
+
+$('.container').on('click', function() {
+    $('#input').find('input').focus();
+});
+
+function addLine(input, style, color) {
+    if($('#output div').length==lineLimit) {
+        $('#output div').eq(0).remove();
+    }
+    style = typeof style !== 'undefined' ? style : 'line';
+    color = typeof color !== 'undefined' ? color : 'white';
+    $('#output').append('<div class="'+style+' '+color+'">'+input+'</div>');
+}
+
+function execCommand(command){
+    if ( commands[command] ) {
+      return commands[command]();
+    } else {
+      addLine("Command '" + command + "' was not found.");
+    }
+}
+
+// var commands = {
+//     help: function (){
+//         addLine("Available command list:");
+//         addLine("dir", 'margin');
+//         addLine("help", 'margin');
+//         addLine("ps", 'margin');
+//     },
+//     dir: function(){
+//         addLine(".");
+//         addLine("..");
+//         addLine("Applications", 'margin', 'blue');
+//         addLine("Documents", 'margin', 'blue');
+//         addLine("Downloads", 'margin', 'blue');
+//         addLine("Movies", 'margin', 'blue');
+//         addLine("Music", 'margin', 'blue');
+//         addLine("System", 'margin', 'blue');
+//     },
+//     ps: function() {
+//         addLine("Running processes:");
+//         addLine("name: browser pid:8876", 'margin');
+//         addLine("name: movie player pid:3213", 'margin');
+//         addLine("name: system pid:0012", 'margin');
+//     }
+// }
+</script>
+
+</body>
+</html>

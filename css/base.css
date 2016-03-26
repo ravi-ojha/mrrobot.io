@@ -1,0 +1,65 @@
+body {
+    font-size: 16px;
+    background: #2b3e51;
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+
+.float-left {
+    float: left;
+}
+
+.container {
+margin: 50px auto;
+height: 600px;
+width: 950px;
+position:relative;
+border:1px solid #fefefe;
+}
+
+#input {
+    position:relative;
+    float:left;
+}
+
+.intro {
+    padding: 10px 20px;
+}
+
+.output {
+    padding: 10px 20px;
+
+}
+
+.console {
+    overflow:hidden;
+    padding: 10px 20px;
+}
+
+.white{
+    color: #fefefe;
+}
+
+.green {
+    color: #2eec74;
+}
+
+.blue{
+    color: #6cbef5;
+}
+
+.line {
+    line-height: 32px;
+}
+
+.weight-600 {
+    font-weight: 600;
+}
+
+.weight-700 {
+    font-weight: 700;
+}
+
+.margin {
+margin-left: 40px;
+margin-bottom:2px;
+}

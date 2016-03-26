@@ -1,0 +1,41 @@
+.cssConsole {
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+    background: #2b3e51;
+    color: #6cbef5;
+    overflow: hidden;
+    cursor: text;
+}
+
+.cssConsoleDisplay {
+    float: left;
+    padding-left: 3px;
+    color: #6cbef5;
+}
+
+.cssConsoleInput {
+    position:absolute;
+    left:0px;
+    top:-30px;
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+.cssConsoleCursor {
+    float: left;
+    background: #6cbef5;
+    width:2px;
+    height:16px;
+    margin: 0 5px;
+    padding:0;
+    visibility: hidden;
+}
+
+.cssConsoleDisplay span.selected {
+    background: #fefefe;
+    color: #370f29;
+}
+
+.cssConsoleDisplay span {
+    margin:0;
+    padding:0;
+}
