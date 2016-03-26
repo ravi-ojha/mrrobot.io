@@ -10,16 +10,26 @@
 </head>
 <body>
     <div class="container">
-        <div class="intro">
-            <div class="line blue">Hey yo! Welcome to my terminal.</div>
+        <div class="intro align-center">
+            <div class="line blue weight-700">Yo ho matey!</div>
         </div>
-        <div id="output" class="output">
+        <div id="output" class="output green">
+            <pre>
+                 _ _ _     _
+                | | | |___| |___ ___ _____ ___
+                | | | | -_| |  _| . |     | -_|
+                |_____|___|_|___|___|_|_|_|___|
 
+            </pre>
+            <div idx="0" class="curr-question blue weight-700">Do you know about Mr. Robot tv series? (y/n)</div>
         </div>
         <div class="console">
             <div class="float-left green weight-700">anon@mrrobot.io <span class="blue">$</span></div>
             <div class="float-left" id="input"></div>
         </div>
+        <iframe
+        src="" id="form-for-the-cursed-belly"
+        width="640" height="820" frameborder="0" marginheight="0" marginwidth="0" style="display:none">Loading...</iframe>
     </div>
 <script>
 $(document).ready(function() {
@@ -32,59 +42,98 @@ $('#input').cssConsole({
     charLimit: 60,
     onEnter: function(){
         addLine("$ "+$('#input').find('input').val());
-        execCommand($('#input').find('input').val());
+        idx = $('.curr-question:last').attr('idx');
+        if(idx == 'undefined') {
+            idx = 0;
+        }
+        execCommand(idx + $('#input').find('input').val());
         $('#input').cssConsole('reset');
         $('#input').find('input').focus();
+        $('#output div').addClass("white");
+        $('#output div').removeClass("blue");
+        $('#output div').removeClass("weight-700");
+        $('#output div').removeClass("curr-question");
+        $('#output div:last').addClass("curr-question blue weight-700");
     }
 });
 
-var lineLimit = 6;
+var lineLimit = 100;
 
 $('.container').on('click', function() {
     $('#input').find('input').focus();
 });
 
-function addLine(input, style, color) {
+function addLine(input, idx, style, color) {
     if($('#output div').length==lineLimit) {
         $('#output div').eq(0).remove();
     }
     style = typeof style !== 'undefined' ? style : 'line';
     color = typeof color !== 'undefined' ? color : 'white';
-    $('#output').append('<div class="'+style+' '+color+'">'+input+'</div>');
+    $('#output').append('<div idx="'+idx+'" class="'+style+' '+color+'">'+input+'</div>');
 }
 
 function execCommand(command){
+    console.log(command);
+    command = command.toLowerCase()
     if ( commands[command] ) {
       return commands[command]();
     } else {
-      addLine("Command '" + command + "' was not found.");
+      addLine("Oye! Answer in y/N please.", command[0]);
     }
 }
 
-// var commands = {
-//     help: function (){
-//         addLine("Available command list:");
-//         addLine("dir", 'margin');
-//         addLine("help", 'margin');
-//         addLine("ps", 'margin');
-//     },
-//     dir: function(){
-//         addLine(".");
-//         addLine("..");
-//         addLine("Applications", 'margin', 'blue');
-//         addLine("Documents", 'margin', 'blue');
-//         addLine("Downloads", 'margin', 'blue');
-//         addLine("Movies", 'margin', 'blue');
-//         addLine("Music", 'margin', 'blue');
-//         addLine("System", 'margin', 'blue');
-//     },
-//     ps: function() {
-//         addLine("Running processes:");
-//         addLine("name: browser pid:8876", 'margin');
-//         addLine("name: movie player pid:3213", 'margin');
-//         addLine("name: system pid:0012", 'margin');
-//     }
-// }
+var commands = {
+    "0y": function (){
+        addLine(questions[2], 2);
+    },
+    "0n": function(){
+        addLine(questions[1], 1);
+    },
+    "1y": function (){
+        addLine(questions[2], 2);
+    },
+    "1n": function(){
+        addLine(questions[5], 5);
+    },
+    "2y": function (){
+        addLine(questions[3], 3);
+    },
+    "2n": function(){
+        addLine(questions[4], 4);
+    },
+    "3y": function (){
+        addLine(questions[6], 6);
+        $('#form-for-the-cursed-belly').attr("src","https://docs.google.com/forms/d/1gtqlEH6vB3Vegb8BW3bfugkYdHghnAgDvah2R8yPzU0/viewform");
+        $('#form-for-the-cursed-belly').show();
+        $('html, body').animate({
+            scrollTop: $("#form-for-the-cursed-belly").offset().top
+        }, 200);
+    },
+    "3n": function(){
+        addLine(questions[4], 4);
+    },
+    "4y": function (){
+        addLine(questions[6], 6);
+        $('#form-for-the-cursed-belly').attr("src","https://docs.google.com/forms/d/1gpigqDgGINwd6tUsExkxw4GYXvwfMvm5Tc2mZodgiBw/viewform");
+        $('#form-for-the-cursed-belly').show();
+        $('html, body').animate({
+            scrollTop: $("#form-for-the-cursed-belly").offset().top
+        }, 200);
+    },
+    "4n": function(){
+        addLine(questions[5], 5);
+    },
+}
+
+var questions = ["Do you know about Mr. Robot tv series? (y/n)",
+                 "Well, okay! How about Mr. Robot video game? (y/n)",
+                 "Cool! What do you think of this domain name? Precious? (y/n)",
+                 "Would you to bid for it? (y/n)",
+                 "No?! Umm.. Got an idea on how to make the best of it? (y/n)",
+                 "That's okay.. Share this wit' your mateys. Hearty thanks!",
+                 "Scribe down that form! I shall get back to you asap :)"];
+
+
 </script>
 
 </body>
